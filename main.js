@@ -9,6 +9,12 @@ class Field {
   constructor(field) {
     this.field = field
   }
+  print() {
+    this.field.forEach((element) => {
+      console.log(element.join(''))
+    })
+  }
+  isHat() {}
 }
 
 const myField = new Field([
@@ -17,4 +23,5 @@ const myField = new Field([
   ['░', '^', '░'],
 ])
 
-console.log(myField)
+console.log(myField.print())
+let userMove = prompt('where would you like to move?')
