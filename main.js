@@ -6,7 +6,7 @@ const fieldCharacter = '░'
 const pathCharacter = '*'
 
 class Field {
-  constructor(field) {
+  constructor(field = [[]]) {
     this.field = field
     this.locationX = 0
     this.locationY = 0
@@ -23,6 +23,7 @@ class Field {
       this.askQuestion()
     }
   }
+  //prompt questions
   askQuestion() {
     const answer = prompt('Which direction?(u, d, l, r)').toUpperCase()
     switch (answer) {
@@ -43,6 +44,25 @@ class Field {
         this.askQuestion()
         break
     }
+  }
+  // if player is on the board
+  isInBounds() {
+    return (
+      this.locationY >= 0 &&
+      this.locationX >= 0 &&
+      this.locationY < this.field.length &&
+      this.locationX < this.field[0].length
+    )
+  }
+
+  //if a hat
+  isHat() {
+    return this.field[this.locationX][this.locationY] === hat
+  }
+
+  //if hole
+  isHole() {
+    return this.field[this.locationX][this.locationY] === hole
   }
 }
 
